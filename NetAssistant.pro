@@ -8,7 +8,7 @@ QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = lsc_tools
+TARGET = lsc_tools-A
 TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++0x

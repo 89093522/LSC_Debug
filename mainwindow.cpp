@@ -89,6 +89,7 @@ MainWindow::MainWindow(QWidget *parent) :
     init();
 
     mReceiveNum = mSendNum = 0;
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 void MainWindow::connectNet()
@@ -579,4 +580,69 @@ void MainWindow::on_pushButton_9_released()
       ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
       client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
   }
+}
+
+void MainWindow::on_pushButton_10_released() //update soft
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    obj.insert("address",QJsonValue(ui->textEdit_update_url->toPlainText()));
+    obj.insert("md5",QJsonValue(ui->textEdit_update_md5->toPlainText()));
+
+    root_object.insert("AppUpdate",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_11_released()  //电梯协议
+{
+    QString lift="CAN";
+    QString brand="ThyssenKrupp";
+    QString model="MC2";
+    switch (ui->comboBox_lift->currentIndex()) {
+    case 0:
+        lift="CAN";
+        brand="ThyssenKrupp";
+        model="MC2";
+        break;
+    case 1:
+        lift="MC2-H";
+        brand="ThyssenKrupp";
+        model="MC2-H";
+        break;
+    case 2:
+        lift="SPI";
+        brand="KONE";
+        model="Unknow";
+        break;
+    case 3:
+        lift="TOSHIBA";
+        brand="TOSHIBA";
+        model="Unknow";
+        break;
+    default:
+        break;
+    }
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    obj.insert("protocol",QJsonValue(lift));
+    obj.insert("brand",QJsonValue(brand));
+    obj.insert("model",QJsonValue(model));
+    root_object.insert("ElevatorProtocol",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
 }
