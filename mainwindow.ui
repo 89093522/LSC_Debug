@@ -702,13 +702,6 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_9">
              <item>
               <widget class="QLabel" name="label_6">
@@ -779,13 +772,6 @@ border-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
               <widget class="QLabel" name="label_7">
@@ -851,13 +837,6 @@ border-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line_4">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QComboBox" name="comboBox_3">
              <item>
               <property name="text">
@@ -882,13 +861,6 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_3">
              <property name="text">
               <string>timing sync</string>
@@ -896,23 +868,9 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_6">
              <property name="text">
               <string>Screen Shot</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -966,21 +924,7 @@ border-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line_13">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_10">
-             <item>
-              <widget class="Line" name="line_7">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_9">
                <property name="text">
@@ -1007,13 +951,6 @@ border-color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="Line" name="line_14">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLineEdit" name="lineEdit_gw">
                <property name="text">
                 <string>192.168.1.1</string>
@@ -1023,13 +960,6 @@ border-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line_8">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_setip">
              <property name="text">
               <string>Set</string>
@@ -1037,11 +967,17 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_10">
+            <spacer name="verticalSpacer_3">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Vertical</enum>
              </property>
-            </widget>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -1055,23 +991,9 @@ border-color: rgb(255, 255, 255);
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line_11">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_5">
              <property name="text">
               <string>Default 192.168.1.*</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line_12">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1101,7 +1023,7 @@ border-color: rgb(255, 255, 255);
        </widget>
        <widget class="QWidget" name="toolBoxPage3" native="true">
         <attribute name="label">
-         <string>Media Set</string>
+         <string/>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
@@ -1114,13 +1036,6 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_18">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_9">
              <property name="text">
               <string>Play Local</string>
@@ -1128,23 +1043,22 @@ border-color: rgb(255, 255, 255);
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_17">
+            <spacer name="verticalSpacer_5">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Vertical</enum>
              </property>
-            </widget>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>Url</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line_16">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1160,13 +1074,6 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_15">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_7">
              <property name="text">
               <string>Send Live</string>
@@ -1174,7 +1081,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <spacer name="verticalSpacer_3">
+            <spacer name="verticalSpacer_4">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
@@ -1216,13 +1123,6 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_19">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QLabel" name="label_13">
              <property name="text">
               <string>MD5</string>
@@ -1241,31 +1141,11 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_20">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_10">
              <property name="text">
               <string>Update</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item>
             <spacer name="verticalSpacer_6">
@@ -1299,13 +1179,6 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_22">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QComboBox" name="comboBox_lift">
              <item>
               <property name="text">
@@ -1330,13 +1203,6 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="Line" name="line_21">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_11">
              <property name="text">
               <string>Send</string>
@@ -1344,7 +1210,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <spacer name="verticalSpacer_5">
+            <spacer name="verticalSpacer_7">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
