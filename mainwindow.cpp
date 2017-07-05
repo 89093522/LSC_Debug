@@ -646,3 +646,8 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
         client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
     }
 }
+
+void MainWindow::on_pushButton_12_released()
+{
+     ui->send_plainTextEdit->setPlainText("NetSet$192.168.1.51#255.255.255.0#192.168.1.1#end");
+}

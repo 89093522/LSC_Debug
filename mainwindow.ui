@@ -691,7 +691,7 @@ margin:0px</string>
            <enum>QTabWidget::Triangular</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <property name="styleSheet">
@@ -1007,6 +1007,13 @@ border-width:4</string>
                <widget class="QPushButton" name="pushButton_5">
                 <property name="text">
                  <string>Default 192.168.1.*</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_12">
+                <property name="text">
+                 <string>Give A line</string>
                 </property>
                </widget>
               </item>

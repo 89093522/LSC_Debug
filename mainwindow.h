@@ -61,6 +61,8 @@ private slots:
 
     void on_pushButton_11_released();
 
+    void on_pushButton_12_released();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;
