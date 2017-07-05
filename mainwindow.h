@@ -95,6 +95,7 @@ private:
 
     void doSettings(bool isWrite);
     void init();
+    int ip_now;
 };
 
 #endif // MAINWINDOW_H

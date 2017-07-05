@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    this->ip_now=12;
     qDebug("%s", __func__);
     ui->setupUi(this);
 
@@ -89,7 +90,7 @@ MainWindow::MainWindow(QWidget *parent) :
     init();
 
     mReceiveNum = mSendNum = 0;
-    ui->tabWidget->setCurrentIndex(0);
+    ui->toolBox->setCurrentIndex(0);
 }
 
 void MainWindow::connectNet()
@@ -649,5 +650,6 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
 
 void MainWindow::on_pushButton_12_released()
 {
-     ui->send_plainTextEdit->setPlainText("NetSet$192.168.1.51#255.255.255.0#192.168.1.1#end");
+     ui->send_plainTextEdit->setPlainText(QString("NetSet$192.168.1.%1#255.255.255.0#192.168.1.1#end").arg(QString::number(ip_now)));
+     this->ip_now++;
 }
