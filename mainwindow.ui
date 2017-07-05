@@ -872,7 +872,7 @@ border:0px solid white;</string>
              <item>
               <widget class="QLineEdit" name="lineEdit_ip">
                <property name="text">
-                <string>192.168.1.33</string>
+                <string>192.168.1.10</string>
                </property>
               </widget>
              </item>
