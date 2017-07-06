@@ -12,6 +12,7 @@
 #include <QJsonDocument>
 #include <QDateTime>
 #include <QTimer>
+#include <QDate>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,7 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ip_now=12;
     qDebug("%s", __func__);
     ui->setupUi(this);
+    static const QDate buildDate = QLocale( QLocale::English ).toDate( QString( __DATE__ ).replace( "  ", " 0" ), "MMM dd yyyy");
 
+    qDebug()<<"V"<<buildDate<<buildDate.toString("yyyyMMdd");
+    this->setWindowTitle(QString("LSC Tools调试工具 版本@:%1  By ®©  shaorongqiang@jiahuitech.com").arg(buildDate.toString("yyyyMMdd")));
     /* 读取配置文件 */
     doSettings(false);
 
@@ -32,10 +36,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->remoteIP_lineEdit->setText(mRemoteIp);
     /* 设置远程端口号 */
     /* TODO: 将其设置为不能以0开头 */
-    ui->remoteport_spinBox->setRange(1024,9999);
+    ui->remoteport_spinBox->setRange(1024,65533);
     ui->remoteport_spinBox->setValue(mRemotePort);
     /* 设置本地端口号 */
-    ui->localport_spinBox->setRange(1024,9999);
+    ui->localport_spinBox->setRange(1024,65533);
     ui->localport_spinBox->setValue(mLocalPort);
 
     isConnect = false;
@@ -82,7 +86,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timeLabel->setText(QDate::currentDate().toString("yyyy-MM-dd"));
 
     // 更新接收到的数据
-    connect(&client, SIGNAL(valueChanged(QString)), this, SLOT(updateReceiveText(QString)));
+    connect(&client, SIGNAL(valueChanged(QString,QHostAddress)), this, SLOT(updateReceiveText(QString,QHostAddress)));
     connect(&client,
             SIGNAL(updateState(QString, QVariant, QVariant)),
             this, SLOT(updateStateBar(QString, QVariant, QVariant)));
@@ -124,12 +128,12 @@ void MainWindow::connectNet()
     client.udpStart(chelper.getLocalHostIP(), mLocalPort, QHostAddress(mRemoteIp), mRemotePort);
 }
 
-void MainWindow::updateReceiveText(const QString string)  //update scren;
+void MainWindow::updateReceiveText(const QString string,QHostAddress addr)  //update scren;
 {
 
     ui->label_pic->hide();
     QString oldString = ui->receive_textBrowser->toPlainText();
-    QString sss=QString("[@ %1:]-------------------------------------\n").arg(QTime::currentTime().toString("hh:mm:ss-zzz"));
+    QString sss=QString("[%2@ %1: : ]-------------------------------------\n").arg(QTime::currentTime().toString("hh:mm:ss-zzz")).arg(addr.toString());
     ui->receive_textBrowser->setText(oldString + sss+string + "\n");
 
     // 将光标移动到最后位置
@@ -254,14 +258,20 @@ void MainWindow::doSettings(bool isWrite)
     const QString REMOTE_IP = "remoteip";
     const QString REMOTE_PORT = "remoteport";
     const QString LOCAL_PORT = "localport";
+    QString UPDATE_URL="updateurl";
+    QString UPDATE_MD5="updatemd5";
     if(isWrite) {
         settings.setValue(REMOTE_IP, mRemoteIp);
         settings.setValue(REMOTE_PORT, mRemotePort);
         settings.setValue(LOCAL_PORT, mLocalPort);
+        settings.setValue(UPDATE_URL,ui->textEdit_update_url->toPlainText());
+        settings.setValue(UPDATE_MD5,ui->textEdit_update_md5->toPlainText());
     } else {
         mRemoteIp = settings.value(REMOTE_IP, chelper.getLocalHostIP().toString()).toString();
-        mRemotePort = settings.value(REMOTE_PORT, 1234).toInt();
-        mLocalPort = settings.value(LOCAL_PORT, 2468).toInt();
+        mRemotePort = settings.value(REMOTE_PORT, 9009).toInt();
+        mLocalPort = settings.value(LOCAL_PORT, 9009).toInt();
+        ui->textEdit_update_url->setText(settings.value(UPDATE_URL, "http://192.168.1.222/R").toString());
+         ui->textEdit_update_md5->setText(settings.value(UPDATE_MD5, "md5").toString());
     }
 }
 
@@ -652,4 +662,32 @@ void MainWindow::on_pushButton_12_released()
 {
      ui->send_plainTextEdit->setPlainText(QString("NetSet$192.168.1.%1#255.255.255.0#192.168.1.1#end").arg(QString::number(ip_now)));
      this->ip_now++;
+}
+
+void MainWindow::on_pushButton_13_released()
+{
+    QJsonObject obj;
+  QString s="XXXX";
+  obj.insert("Rollmessage",QJsonValue(s));
+  QJsonDocument json_s;
+  json_s.setObject(obj);
+  qDebug()<<json_s.toJson();
+  if(!json_s.isNull()){
+      QByteArray datagram=json_s.toJson();
+
+      ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+
+  }
+}
+
+void MainWindow::on_checkBox_udp_broadcast_toggled(bool checked)
+{
+    if(checked){
+
+        this->mRemoteIp=QString("255.255.255.255");
+    }
+    else{
+        this->mRemoteIp=ui->remoteIP_lineEdit->text();
+
+    }
 }

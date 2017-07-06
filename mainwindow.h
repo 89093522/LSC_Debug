@@ -26,7 +26,7 @@ private slots:
     void on_clearSend_pushButton_released();
     void on_connect_pushButton_released();
     void on_handSend_pushButton_released();
-    void updateReceiveText(const QString string);
+    void updateReceiveText(const QString string,QHostAddress addr);
     void on_clearCounter_pushButton_released();
     void on_quit_pushButton_released();
     void updateStateBar(QString state, QVariant inNum, QVariant outNum);
@@ -62,6 +62,10 @@ private slots:
     void on_pushButton_11_released();
 
     void on_pushButton_12_released();
+
+    void on_pushButton_13_released();
+
+    void on_checkBox_udp_broadcast_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;

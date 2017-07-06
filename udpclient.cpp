@@ -147,7 +147,7 @@ void UDPClient::readyRead(QUdpSocket* socket)
     qDebug() << "Message from:" << sender.toString();
     qDebug() << "Message port:" << senderPort;
     qDebug() << "Message: " << Buffer;
-    emit valueChanged(Buffer);
+    emit valueChanged(Buffer,sender);
     emit updateState(QString(), Buffer.size(), QVariant(QVariant::Int));
 }
 

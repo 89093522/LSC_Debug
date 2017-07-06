@@ -15,7 +15,7 @@ public:
     void readyRead(QUdpSocket* socket);
 
 signals:
-    void valueChanged(QString newValue);
+    void valueChanged(QString newValue,QHostAddress addr);
     void updateState(QString state, QVariant inNum, QVariant outNum);
 public slots:
     void readyListnerRead();
