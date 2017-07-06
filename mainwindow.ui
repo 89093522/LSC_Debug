@@ -271,6 +271,15 @@
         </item>
         <item row="1" column="0">
          <widget class="QTextBrowser" name="receive_textBrowser">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(26, 39, 48);
 color: rgb(255, 255, 255);
@@ -418,7 +427,7 @@ border:0px solid white;
          <x>790</x>
          <y>0</y>
          <width>211</width>
-         <height>601</height>
+         <height>621</height>
         </rect>
        </property>
        <property name="title">
@@ -438,8 +447,8 @@ border:0px solid white;
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>187</width>
-             <height>430</height>
+             <width>188</width>
+             <height>410</height>
             </rect>
            </property>
            <attribute name="label">
@@ -460,7 +469,7 @@ border:0px solid white;
                 <item>
                  <widget class="QLabel" name="label_6">
                   <property name="text">
-                   <string>Vide Volume</string>
+                   <string>视频声音</string>
                   </property>
                  </widget>
                 </item>
@@ -530,7 +539,7 @@ border:0px solid white;
                 <item>
                  <widget class="QLabel" name="label_7">
                   <property name="text">
-                   <string>LCD PWM</string>
+                   <string>屏幕亮度</string>
                   </property>
                  </widget>
                 </item>
@@ -591,47 +600,76 @@ border:0px solid white;
                </layout>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_3">
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
-                 <property name="text">
-                  <string>Screen0</string>
-                 </property>
+                 <widget class="QLabel" name="label_17">
+                  <property name="text">
+                   <string>旋屏</string>
+                  </property>
+                 </widget>
                 </item>
                 <item>
-                 <property name="text">
-                  <string>Screen90</string>
-                 </property>
+                 <widget class="QComboBox" name="comboBox_3">
+                  <item>
+                   <property name="text">
+                    <string>Screen0</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Screen90</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Screen180</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Screen270</string>
+                   </property>
+                  </item>
+                 </widget>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>Screen180</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Screen270</string>
-                 </property>
-                </item>
-               </widget>
+               </layout>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_3">
                 <property name="text">
-                 <string>timing sync</string>
+                 <string>校时</string>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_6">
                 <property name="text">
-                 <string>Screen Shot</string>
+                 <string>截屏</string>
                 </property>
                </widget>
               </item>
               <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item>
+                 <widget class="QPushButton" name="pushButton_17">
+                  <property name="text">
+                   <string>打开看门狗</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_16">
+                  <property name="text">
+                   <string>关闭看门狗</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
                <widget class="QPushButton" name="pushButton_2">
                 <property name="text">
-                 <string>Reboot</string>
+                 <string>重启</string>
                 </property>
                </widget>
               </item>
@@ -658,7 +696,7 @@ border:0px solid white;
              <x>0</x>
              <y>0</y>
              <width>187</width>
-             <height>430</height>
+             <height>424</height>
             </rect>
            </property>
            <attribute name="label">
@@ -724,7 +762,7 @@ border:0px solid white;
               <item>
                <widget class="QPushButton" name="pushButton_setip">
                 <property name="text">
-                 <string>Set</string>
+                 <string>发送设置</string>
                 </property>
                </widget>
               </item>
@@ -762,7 +800,7 @@ border:0px solid white;
               <item>
                <widget class="QPushButton" name="pushButton_12">
                 <property name="text">
-                 <string>Give A line</string>
+                 <string>自动累加IP发送</string>
                 </property>
                </widget>
               </item>
@@ -789,7 +827,7 @@ border:0px solid white;
              <x>0</x>
              <y>0</y>
              <width>187</width>
-             <height>430</height>
+             <height>424</height>
             </rect>
            </property>
            <attribute name="label">
@@ -801,14 +839,14 @@ border:0px solid white;
               <item>
                <widget class="QPushButton" name="pushButton_8">
                 <property name="text">
-                 <string>Stop Play</string>
+                 <string>停止播放</string>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_9">
                 <property name="text">
-                 <string>Play Local</string>
+                 <string>开始播放本地视频</string>
                 </property>
                </widget>
               </item>
@@ -828,7 +866,7 @@ border:0px solid white;
               <item>
                <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string>Url</string>
+                 <string>流媒体视频地址URL</string>
                 </property>
                </widget>
               </item>
@@ -846,7 +884,7 @@ p, li { white-space: pre-wrap; }
               <item>
                <widget class="QPushButton" name="pushButton_7">
                 <property name="text">
-                 <string>Send Live</string>
+                 <string>发送流媒体播放命令</string>
                 </property>
                </widget>
               </item>
@@ -873,7 +911,7 @@ p, li { white-space: pre-wrap; }
              <x>0</x>
              <y>0</y>
              <width>187</width>
-             <height>430</height>
+             <height>424</height>
             </rect>
            </property>
            <attribute name="label">
@@ -885,7 +923,7 @@ p, li { white-space: pre-wrap; }
               <item>
                <widget class="QLabel" name="label_12">
                 <property name="text">
-                 <string>Url</string>
+                 <string>输入更新zip服务器地址</string>
                 </property>
                </widget>
               </item>
@@ -903,7 +941,7 @@ p, li { white-space: pre-wrap; }
               <item>
                <widget class="QLabel" name="label_13">
                 <property name="text">
-                 <string>MD5</string>
+                 <string>输入更新ZIP文件MD5</string>
                 </property>
                </widget>
               </item>
@@ -921,7 +959,7 @@ p, li { white-space: pre-wrap; }
               <item>
                <widget class="QPushButton" name="pushButton_10">
                 <property name="text">
-                 <string>Update</string>
+                 <string>发送更新命令</string>
                 </property>
                </widget>
               </item>
@@ -948,7 +986,7 @@ p, li { white-space: pre-wrap; }
              <x>0</x>
              <y>0</y>
              <width>187</width>
-             <height>430</height>
+             <height>424</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1011,6 +1049,111 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <spacer name="verticalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>187</width>
+             <height>424</height>
+            </rect>
+           </property>
+           <attribute name="label">
+            <string>文件上传</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_13">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>请选择对应升级ZIP</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_ftp">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>自动MD5</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_md5">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_ftp_choose">
+                <property name="text">
+                 <string>选择对应升级包</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QProgressBar" name="progressBar_ftp">
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_upload">
+                <property name="text">
+                 <string>开始上传</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_ftp_info"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_14">
+                <property name="text">
+                 <string>发送校验解压命令</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_15">
+                <property name="text">
+                 <string>接到Finsh Code0 重启</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_10">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>

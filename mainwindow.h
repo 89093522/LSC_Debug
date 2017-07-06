@@ -7,7 +7,11 @@
 #include <QPushButton>
 #include "udpclient.h"
 #include "commonhelper.h"
-
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QFile>
+#include <QCryptographicHash>
+#include <FtpManager.h>
 namespace Ui {
 class MainWindow;
 }
@@ -67,6 +71,21 @@ private slots:
 
     void on_checkBox_udp_broadcast_toggled(bool checked);
 
+    void on_pushButton_ftp_choose_released();
+
+    void on_pushButton_upload_released();
+
+    void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
+    void error(QNetworkReply::NetworkError error);
+
+    void on_pushButton_14_released();
+
+    void on_pushButton_15_released();
+
+    void on_pushButton_16_released();
+
+    void on_pushButton_17_released();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;
@@ -100,6 +119,8 @@ private:
     void doSettings(bool isWrite);
     void init();
     int ip_now;
+
+    FtpManager ftp;
 };
 
 #endif // MAINWINDOW_H

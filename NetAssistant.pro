@@ -16,11 +16,13 @@ QMAKE_CXXFLAGS += -std=c++0x
 SOURCES += main.cpp\
         mainwindow.cpp \
     udpclient.cpp \
-    commonhelper.cpp
+    commonhelper.cpp \
+    FtpManager.cpp
 
 HEADERS  += mainwindow.h \
     udpclient.h \
-    commonhelper.h
+    commonhelper.h \
+    FtpManager.h
 
 FORMS    += mainwindow.ui
 RC_FILE = net.rc

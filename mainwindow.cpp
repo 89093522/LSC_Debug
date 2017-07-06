@@ -691,3 +691,142 @@ void MainWindow::on_checkBox_udp_broadcast_toggled(bool checked)
 
     }
 }
+
+void MainWindow::on_pushButton_ftp_choose_released()
+{
+    QString file_name="0";
+
+    QFileDialog *fileDialog = new QFileDialog(this);
+           fileDialog->setWindowTitle(tr("选择ZIP升级包"));
+           fileDialog->setDirectory(".");
+           fileDialog->setNameFilter(tr("ZIP (*.zip)"));
+           if(fileDialog->exec() == QDialog::Accepted) {
+                   file_name = fileDialog->selectedFiles()[0];
+                //   QMessageBox::information(NULL, tr("Path"), tr("You selected ") + file_name );
+
+           } else {
+                  // QMessageBox::information(NULL, tr("Path"), tr("You didn't select any files."));
+           }
+
+        ui->textEdit_ftp->setText(file_name);
+           QString sMd5="0";
+         // qDebug()<<"File here: "<<newFileInfo.absoluteFilePath();
+             QFile file(file_name);
+             if(file.open(QIODevice::ReadOnly)){
+                 QByteArray bArray = QCryptographicHash::hash(file.readAll(),QCryptographicHash::Md5);
+                 sMd5 = QString(bArray.toHex()).toUpper();
+            }
+            ui->textEdit_md5->setText(sMd5);
+           file.close();
+}
+
+void MainWindow::on_pushButton_upload_released()
+{
+
+    QFile file(ui->textEdit_ftp->toPlainText());
+    qDebug()<<file.fileName();
+    QFileInfo fileinfo(file.fileName());
+    QString s_name=fileinfo.fileName();
+
+    ftp.setHostPort(this->mRemoteIp,21);
+    ui->textEdit_ftp_info->setText(QString("Connect to host:%1").arg(this->mRemoteIp));
+    ftp.setUserInfo("root","jh=-tech");
+    ui->progressBar_ftp->setValue(0);
+    ftp.put(ui->textEdit_ftp->toPlainText(),"/home/root/tmp/"+s_name);
+    connect(&ftp, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(error(QNetworkReply::NetworkError)));
+   connect(&ftp, SIGNAL(uploadProgress(qint64, qint64)), this, SLOT(uploadProgress(qint64, qint64)));
+    //ftp.deleteLater();
+}
+
+void MainWindow::error(QNetworkReply::NetworkError error)
+{
+    qDebug()<<error;
+    switch (error) {
+       case QNetworkReply::HostNotFoundError :
+           qDebug() << QString::fromLocal8Bit("主机没有找到");
+           break;
+           // 其他错误处理
+       default:
+           break;
+       }
+    ui->textEdit_ftp_info->setText(ui->textEdit_ftp_info->toPlainText()+"错误,错误号:"+QString::number(error));
+    QTextCursor tmpCursor = ui->textEdit_ftp_info->textCursor();
+    tmpCursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor, 4);
+    ui->textEdit_ftp_info->setTextCursor(tmpCursor);
+}
+void MainWindow::uploadProgress(qint64 bytesSent, qint64 bytesTotal)
+{
+
+    int value=bytesSent*100/bytesTotal;
+  qDebug()<<bytesSent<<bytesTotal<<value;
+    ui->progressBar_ftp->setValue(value);
+    if(value==100){
+        ui->textEdit_ftp_info->setText(ui->textEdit_ftp_info->toPlainText()+"上传完毕,可以发送升级命令并重启:");
+        QTextCursor tmpCursor = ui->textEdit_ftp_info->textCursor();
+        tmpCursor.movePosition(QTextCursor::End, QTextCursor::MoveAnchor, 4);
+        ui->textEdit_ftp_info->setTextCursor(tmpCursor);
+
+    }
+}
+
+void MainWindow::on_pushButton_14_released() //发送解压命令
+{
+     ui->progressBar_ftp->setValue(0);
+    QJsonObject root_object;
+    QJsonObject obj;
+    QFile file(ui->textEdit_ftp->toPlainText());
+    qDebug()<<file.fileName();
+    QFileInfo fileinfo(file.fileName());
+    QString s_name=fileinfo.fileName();
+    obj.insert("zipname",QJsonValue(s_name));
+    obj.insert("md5",QJsonValue(ui->textEdit_md5->toPlainText()));
+    obj.insert("action",QJsonValue("unzip"));
+    obj.insert("isreboot",QJsonValue("false"));
+
+    root_object.insert("AppUnzip",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_15_released()
+{
+    ui->progressBar_ftp->setValue(0);
+    on_pushButton_2_released();
+}
+
+void MainWindow::on_pushButton_16_released() //close watch dog open debug mode
+{
+    QJsonObject obj;
+  QString s="CloseWatchDog";
+  obj.insert("Command",QJsonValue(s));
+  QJsonDocument json_s;
+  json_s.setObject(obj);
+  qDebug()<<json_s.toJson();
+  if(!json_s.isNull()){
+      QByteArray datagram=json_s.toJson();
+
+      ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+      client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+  }
+}
+
+void MainWindow::on_pushButton_17_released()//opendog
+{
+    QJsonObject obj;
+  QString s="OpenWatchDog";
+  obj.insert("Command",QJsonValue(s));
+  QJsonDocument json_s;
+  json_s.setObject(obj);
+  qDebug()<<json_s.toJson();
+  if(!json_s.isNull()){
+      QByteArray datagram=json_s.toJson();
+
+      ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+      client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+  }
+}
