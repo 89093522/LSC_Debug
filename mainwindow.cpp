@@ -311,8 +311,10 @@ void MainWindow::on_connect_pushButton_released()
     // 如果当前网络是连接状态　调用断开连接函数
     if(isConnect) {
         disConnectNet();
+
     } else { // 否则调用连接函数
         connectNet();
+
     }
 }
 

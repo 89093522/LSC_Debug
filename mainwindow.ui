@@ -468,6 +468,9 @@ border:0px solid white;
                <layout class="QHBoxLayout" name="horizontalLayout_9">
                 <item>
                  <widget class="QLabel" name="label_6">
+                  <property name="toolTip">
+                   <string/>
+                  </property>
                   <property name="text">
                    <string>视频声音</string>
                   </property>
@@ -538,6 +541,9 @@ border:0px solid white;
                <layout class="QHBoxLayout" name="horizontalLayout_8">
                 <item>
                  <widget class="QLabel" name="label_7">
+                  <property name="toolTip">
+                   <string/>
+                  </property>
                   <property name="text">
                    <string>屏幕亮度</string>
                   </property>
@@ -603,6 +609,9 @@ border:0px solid white;
                <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
                  <widget class="QLabel" name="label_17">
+                  <property name="toolTip">
+                   <string>重启后生效</string>
+                  </property>
                   <property name="text">
                    <string>旋屏</string>
                   </property>
@@ -610,6 +619,9 @@ border:0px solid white;
                 </item>
                 <item>
                  <widget class="QComboBox" name="comboBox_3">
+                  <property name="toolTip">
+                   <string>重启后生效</string>
+                  </property>
                   <item>
                    <property name="text">
                     <string>Screen0</string>
@@ -652,6 +664,9 @@ border:0px solid white;
                <layout class="QHBoxLayout" name="horizontalLayout_13">
                 <item>
                  <widget class="QPushButton" name="pushButton_17">
+                  <property name="toolTip">
+                   <string>重启后生效</string>
+                  </property>
                   <property name="text">
                    <string>打开看门狗</string>
                   </property>
@@ -659,6 +674,9 @@ border:0px solid white;
                 </item>
                 <item>
                  <widget class="QPushButton" name="pushButton_16">
+                  <property name="toolTip">
+                   <string>重启后生效</string>
+                  </property>
                   <property name="text">
                    <string>关闭看门狗</string>
                   </property>
@@ -761,6 +779,9 @@ border:0px solid white;
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_setip">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>发送设置</string>
                 </property>
@@ -792,6 +813,9 @@ border:0px solid white;
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_5">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>Default 192.168.1.*</string>
                 </property>
@@ -799,6 +823,9 @@ border:0px solid white;
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_12">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>自动累加IP发送</string>
                 </property>
@@ -958,6 +985,9 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_10">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>发送更新命令</string>
                 </property>
@@ -1004,6 +1034,9 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QComboBox" name="comboBox_lift">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <item>
                  <property name="text">
                   <string>蒂森CAN</string>
@@ -1088,6 +1121,12 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QTextEdit" name="textEdit_ftp">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -1102,6 +1141,12 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QTextEdit" name="textEdit_md5">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -1136,10 +1181,20 @@ p, li { white-space: pre-wrap; }
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_ftp_info"/>
+               <widget class="QTextEdit" name="textEdit_ftp_info">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>70</height>
+                 </size>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_14">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>发送校验解压命令</string>
                 </property>
@@ -1147,6 +1202,9 @@ p, li { white-space: pre-wrap; }
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_15">
+                <property name="toolTip">
+                 <string>重启后生效</string>
+                </property>
                 <property name="text">
                  <string>接到Finsh Code0 重启</string>
                 </property>
@@ -1364,6 +1422,9 @@ border:0px solid white;</string>
              </item>
              <item>
               <widget class="QPushButton" name="connect_pushButton">
+               <property name="toolTip">
+                <string>连接网络后,点击GetAllInfo确认连接正常</string>
+               </property>
                <property name="text">
                 <string>连接网络</string>
                </property>
