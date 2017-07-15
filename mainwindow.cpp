@@ -95,6 +95,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mReceiveNum = mSendNum = 0;
     ui->toolBox->setCurrentIndex(0);
+    this->timer_send=new QTimer(this);
+    connect(this->timer_send,SIGNAL(timeout()),this,SLOT(on_handSend_pushButton_released()));
 }
 
 void MainWindow::connectNet()
@@ -831,4 +833,70 @@ void MainWindow::on_pushButton_17_released()//opendog
       ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
       client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
   }
+}
+
+void MainWindow::on_pushButton_18_released()
+{
+    QJsonObject obj;
+  QString s="GiveMeElevatorStatus";
+  obj.insert("JsonType",QJsonValue(s));
+  QJsonDocument json_s;
+  json_s.setObject(obj);
+  qDebug()<<json_s.toJson();
+  if(!json_s.isNull()){
+      QByteArray datagram=json_s.toJson();
+
+      ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+      client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+  }
+}
+
+void MainWindow::on_pushButton_19_released()
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    obj.insert("ssid",QJsonValue(ui->lineEdit_ssid->text()));
+    obj.insert("passwd",QJsonValue(ui->lineEdit_ssid_passwd->text()));
+
+    root_object.insert("AP",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_autoSend_checkBox_clicked(bool checked)
+{
+    if(checked==true){
+        this->timer_send->start(ui->autoSendTime_lineEdit->text().toInt());
+    }
+    else{
+        this->timer_send->stop();
+    }
+}
+
+void MainWindow::on_comboBox_fire_volume_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_comboBox_fire_volume_currentTextChanged(const QString &arg1)
+{
+    QJsonObject obj;
+    obj.insert("FireVolume",QJsonValue(arg1.toFloat()));
+
+
+    QJsonDocument json_s;
+    json_s.setObject(obj);
+    qDebug()<<json_s.toJson();
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
 }

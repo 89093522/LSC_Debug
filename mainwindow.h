@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QCryptographicHash>
 #include <FtpManager.h>
+#include <QTimer>
 namespace Ui {
 class MainWindow;
 }
@@ -86,6 +87,16 @@ private slots:
 
     void on_pushButton_17_released();
 
+    void on_pushButton_18_released();
+
+    void on_pushButton_19_released();
+
+    void on_autoSend_checkBox_clicked(bool checked);
+
+    void on_comboBox_fire_volume_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_fire_volume_currentTextChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;
@@ -119,6 +130,7 @@ private:
     void doSettings(bool isWrite);
     void init();
     int ip_now;
+    QTimer *timer_send;
 
     FtpManager ftp;
 };
