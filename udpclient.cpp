@@ -44,7 +44,8 @@ void UDPClient::sendData(const QString string, const QString remoteIp, const int
         return;
     qDebug("%s %d", __func__, __LINE__);
     QByteArray Data;
-    Data.append(string);
+   // Data.append(string);
+    Data=string.toUtf8();
     emit updateState(QString(), QVariant(QVariant::Int), udpSendSocket->writeDatagram(Data, QHostAddress(remoteIp), port));
 }
 

@@ -651,6 +651,8 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
     obj.insert("protocol",QJsonValue(lift));
     obj.insert("brand",QJsonValue(brand));
     obj.insert("model",QJsonValue(model));
+     obj.insert("hibcop",QJsonValue(ui->comboBox_toshiba_hib->currentText()));
+     obj.insert("can08address",QJsonValue(ui->spinBox_can08->value()));
     root_object.insert("ElevatorProtocol",QJsonValue(obj));
     QJsonDocument json_s;
     json_s.setObject(root_object);

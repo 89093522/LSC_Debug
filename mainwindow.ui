@@ -1342,6 +1342,44 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
+            <widget class="QComboBox" name="comboBox_toshiba_hib">
+             <item>
+              <property name="text">
+               <string>COP-1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>COP-0</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>HIB-1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>HIB-0</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_17">
+             <item>
+              <widget class="QLabel" name="label_22">
+               <property name="text">
+                <string>08采集器协议地址</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_can08"/>
+             </item>
+            </layout>
+           </item>
+           <item>
             <widget class="QPushButton" name="pushButton_11">
              <property name="text">
               <string>Send</string>
