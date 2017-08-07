@@ -1401,6 +1401,27 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_18">
+             <item>
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>滚动字速度</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_rollmsg_speed">
+               <property name="minimum">
+                <number>5</number>
+               </property>
+               <property name="value">
+                <number>10</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
               <widget class="QLabel" name="label_21">

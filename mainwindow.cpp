@@ -902,3 +902,20 @@ void MainWindow::on_comboBox_fire_volume_currentTextChanged(const QString &arg1)
         client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
     }
 }
+
+void MainWindow::on_spinBox_rollmsg_speed_valueChanged(int arg1)
+{
+    QJsonObject obj;
+    obj.insert("RollmessageSpeed",QJsonValue(arg1));
+
+
+    QJsonDocument json_s;
+    json_s.setObject(obj);
+    qDebug()<<json_s.toJson();
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}

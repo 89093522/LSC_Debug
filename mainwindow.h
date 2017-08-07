@@ -97,6 +97,8 @@ private slots:
 
     void on_comboBox_fire_volume_currentTextChanged(const QString &arg1);
 
+    void on_spinBox_rollmsg_speed_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;
