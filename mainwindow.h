@@ -99,6 +99,8 @@ private slots:
 
     void on_spinBox_rollmsg_speed_valueChanged(int arg1);
 
+    void on_comboBox_4_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;

@@ -919,3 +919,46 @@ void MainWindow::on_spinBox_rollmsg_speed_valueChanged(int arg1)
         client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
     }
 }
+
+void MainWindow::on_comboBox_4_currentIndexChanged(int index)
+{
+    bool dual=true;
+    int degree=0;
+    switch(index){
+    case 0: //NULL
+        dual=false;
+        break;
+    case 1:  //0
+        degree=0;
+        break;
+    case 2: //90
+          degree=90;
+        break;
+    case 3: //180
+          degree=180;
+        break;
+    case 4:
+          degree=270;
+        break;
+    default:
+        break;
+
+    }
+
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    obj.insert("dual",dual);
+    obj.insert("rotation",degree);
+
+    root_object.insert("DualDisplay",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+
+
+}

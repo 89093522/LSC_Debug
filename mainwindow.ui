@@ -840,7 +840,7 @@ border:0px solid white;</string>
                 <string>重启后生效</string>
                </property>
                <property name="text">
-                <string>旋屏</string>
+                <string>主屏旋屏</string>
                </property>
               </widget>
              </item>
@@ -917,6 +917,60 @@ border:0px solid white;</string>
               <string>重启</string>
              </property>
             </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_19">
+             <item>
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>副屏设置</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_4">
+               <item>
+                <property name="text">
+                 <string>单显无副屏(标准)</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>副屏0度</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>副屏90度</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>副屏180度</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>副屏270度</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <spacer name="verticalSpacer">
