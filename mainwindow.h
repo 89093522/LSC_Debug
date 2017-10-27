@@ -101,6 +101,10 @@ private slots:
 
     void on_comboBox_4_currentIndexChanged(int index);
 
+    void on_pushButton_tkeap_clicked();
+
+    void on_pushButton_es_host_clicked();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;

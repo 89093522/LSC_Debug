@@ -22,9 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug("%s", __func__);
     ui->setupUi(this);
     static const QDate buildDate = QLocale( QLocale::English ).toDate( QString( __DATE__ ).replace( "  ", " 0" ), "MMM dd yyyy");
-
     qDebug()<<"V"<<buildDate<<buildDate.toString("yyyyMMdd");
-    this->setWindowTitle(QString("LSC Tools调试工具 版本@:%1  By ®©  shaorongqiang@jiahuitech.com").arg(buildDate.toString("yyyyMMdd")));
+    this->setWindowTitle(QString("LSC Tools调试工具 版本@:%1  By ®©  shaorongqiang@jiahuitech.com  内部使用,严禁分发给客户").arg(buildDate.toString("yyyyMMdd")));
     /* 读取配置文件 */
     doSettings(false);
 
@@ -102,24 +101,19 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::connectNet()
 {
     qDebug("%s", __func__);
-
     mRemoteIp = ui->remoteIP_lineEdit->text();
     mRemotePort = ui->remoteport_spinBox->text().toInt();
     mLocalPort = ui->localport_spinBox->text().toInt();
     updateStateBar("UDP通信 " + mRemoteIp + ":" + QString().number(mRemotePort),
                    QVariant(QVariant::Int), QVariant(QVariant::Int));
-
     // No.1
     isConnect = true;
     // 将状态设置为 通
-    ui->state_label->setText("通");
-   // QPalette pa;
+    ui->state_label->setText("通");  
   //  pa.setColor(QPalette::WindowText,Qt::blue);
     //ui->state_label->setPalette(pa);
-
     // 将按钮设置为　断开网络
     ui->connect_pushButton->setText("断开网络");
-
     // 禁用远程端口，本地端口，远程IP
     ui->remoteIP_lineEdit->setEnabled(false);
     ui->remoteport_spinBox->setEnabled(false);
@@ -149,14 +143,12 @@ void MainWindow::updateReceiveText(const QString string,QHostAddress addr)  //up
     QJsonDocument docment=QJsonDocument::fromJson(byte_array,&json_error);
     if(json_error.error==QJsonParseError::NoError){  //是Json数据
         QJsonValue json_value;
-
         if(docment.isObject()){
             QJsonObject obj=docment.object();
             if(obj.contains("ScreenShot")){
                 qDebug()<<"GEt pic";
                 this->get_json_pic(string);
-               // return;
-            }
+               }
             }
     }
 }
@@ -961,4 +953,52 @@ void MainWindow::on_comboBox_4_currentIndexChanged(int index)
     }
 
 
+}
+
+void MainWindow::on_pushButton_tkeap_clicked()
+{
+
+
+
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    obj.insert("appeasevolume",ui->comboBox_tkeap_volume->currentText().toDouble());
+    obj.insert("faultflag",ui->checkBox->isChecked());
+    obj.insert("alarmbuttonflag",ui->checkBox_2->isChecked());
+     obj.insert("faultmessage",ui->textEdit_1->toPlainText());
+     obj.insert("faultsoundfile",ui->textEdit_2->toPlainText());
+     obj.insert("alarmbuttonmessage",ui->textEdit_3->toPlainText());
+     obj.insert("alarmbuttonfile",ui->textEdit_4->toPlainText());
+
+
+    root_object.insert("TkeapAppeaseSetting",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_es_host_clicked()
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+
+
+    obj.insert("flag",ui->checkBox_es_ip->isChecked());
+    obj.insert("ip",ui->lineEdit_ES_HOST->text());
+
+
+
+    root_object.insert("ESHostSetting",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
 }
