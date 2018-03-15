@@ -634,6 +634,11 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
         brand="TOSHIBA";
         model="Unknow";
         break;
+    case 4:
+        lift="TIC3";
+        brand="ThyssenKrupp";
+        model="TIC3";
+        break;
     default:
         break;
     }
@@ -994,6 +999,48 @@ void MainWindow::on_pushButton_es_host_clicked()
 
 
     root_object.insert("ESHostSetting",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+
+
+void MainWindow::on_comboBox_bridge_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_comboBox_bridge_currentTextChanged(const QString &arg1)
+{
+    QJsonObject obj;
+    obj.insert("BridgeBoardName",QJsonValue(arg1));
+    QJsonDocument json_s;
+    json_s.setObject(obj);
+    qDebug()<<json_s.toJson();
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+
+
+    obj.insert("enable",ui->checkBox_gol->isChecked());
+    obj.insert("golvolume",ui->comboBox_gol->currentText().toFloat());
+
+
+
+    root_object.insert("GolSetting",QJsonValue(obj));
     QJsonDocument json_s;
     json_s.setObject(root_object);
     if(!json_s.isNull()){

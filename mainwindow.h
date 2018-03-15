@@ -105,6 +105,14 @@ private slots:
 
     void on_pushButton_es_host_clicked();
 
+   // void on_pushButton_20_clicked();
+
+    void on_comboBox_bridge_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_bridge_currentTextChanged(const QString &arg1);
+
+    void on_pushButton_20_clicked();
+
 private:
     Ui::MainWindow *ui;
     QUdpSocket *udpSocket;
