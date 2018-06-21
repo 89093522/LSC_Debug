@@ -97,6 +97,7 @@ void UDPClient::udpStart(const QHostAddress localIp, const int listnerPort, cons
     }
 
     // 开启接收Socket
+    qDebug()<<"LISTEN"<<localIp<<listnerPort;
     udpListnerStart(localIp, listnerPort);
 }
 

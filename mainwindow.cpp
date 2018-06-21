@@ -639,6 +639,11 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
         brand="ThyssenKrupp";
         model="TIC3";
         break;
+    case 5:
+        lift="CAN-MOBST";
+        brand="ThyssenKrupp";
+        model="MOBST";
+        break;
     default:
         break;
     }
@@ -968,8 +973,11 @@ void MainWindow::on_pushButton_tkeap_clicked()
     QJsonObject root_object;
     QJsonObject obj;
 
+    //buttondelaytimecount
+
     obj.insert("appeasevolume",ui->comboBox_tkeap_volume->currentText().toDouble());
     obj.insert("faultflag",ui->checkBox->isChecked());
+    obj.insert("buttondelaytimecount",ui->spinBox_button->value());
     obj.insert("alarmbuttonflag",ui->checkBox_2->isChecked());
      obj.insert("faultmessage",ui->textEdit_1->toPlainText());
      obj.insert("faultsoundfile",ui->textEdit_2->toPlainText());
@@ -1048,4 +1056,67 @@ void MainWindow::on_pushButton_20_clicked()
         ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
         client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
     }
+}
+
+void MainWindow::on_pushButton_energy_clicked()
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+
+    bool isLOP=false;
+    obj.insert("enable",ui->checkBox_energy->isChecked());
+    if(ui->comboBox_en->currentIndex()==0){
+        isLOP=false;
+    }
+    else{
+        isLOP=true;
+    }
+    obj.insert("isLOP",isLOP);
+
+     obj.insert("pwmvalue",ui->comboBox_en_2->currentText().toInt());
+        obj.insert("entertime",ui->remoteport_spinBox_en->value());
+
+
+
+    root_object.insert("EnergySaving",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_21_clicked()
+{
+    QJsonObject obj;
+    obj.insert("Command",QJsonValue("GiveMeFloorCode"));
+    QJsonDocument json_s;
+    json_s.setObject(obj);
+    qDebug()<<json_s.toJson();
+    if(!json_s.isNull()){
+        QByteArray datagram=json_s.toJson();
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+        client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+}
+
+void MainWindow::on_pushButton_22_clicked()
+{
+    QJsonObject root_object;
+    QJsonObject obj;
+    bool isLOP=false;
+    obj.insert( "0x33",QJsonValue("X"));
+    obj.insert( "0x44",QJsonValue("P"));
+
+    root_object.insert("FloorCodeTable",QJsonValue(obj));
+    QJsonDocument json_s;
+    json_s.setObject(root_object);
+    if(!json_s.isNull()){
+
+        ui->send_plainTextEdit->setPlainText(QString(json_s.toJson().data()));
+       // client.sendData(QString(json_s.toJson().data()), mRemoteIp, mRemotePort);
+    }
+
 }
