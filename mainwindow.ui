@@ -1251,8 +1251,8 @@ border:0px solid white;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>201</width>
-          <height>377</height>
+          <width>136</width>
+          <height>198</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1335,8 +1335,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>201</width>
-          <height>377</height>
+          <width>146</width>
+          <height>234</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1414,7 +1414,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>187</width>
-          <height>380</height>
+          <height>410</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1502,6 +1502,49 @@ p, li { white-space: pre-wrap; }
              </item>
              <item>
               <widget class="QSpinBox" name="spinBox_can08"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_29">
+             <item>
+              <widget class="QLabel" name="label_39">
+               <property name="text">
+                <string>蒂森CAN下SJW值</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_can_SJW">
+               <property name="toolTip">
+                <string>MC1若楼层显示有问题,需要调整为4</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>2</string>
+                </property>
+               </item>
+              </widget>
              </item>
             </layout>
            </item>
@@ -1994,8 +2037,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>201</width>
-          <height>377</height>
+          <width>152</width>
+          <height>118</height>
          </rect>
         </property>
         <attribute name="label">
@@ -2117,8 +2160,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>201</width>
-          <height>377</height>
+          <width>195</width>
+          <height>183</height>
          </rect>
         </property>
         <attribute name="label">
@@ -2252,6 +2295,13 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
            <item>
+            <widget class="QCheckBox" name="checkBox_3">
+             <property name="text">
+              <string>是否同时判断CN2_3输入信号</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="pushButton_energy">
              <property name="text">
               <string>点击确认设置</string>
@@ -2280,7 +2330,7 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>187</width>
+          <width>148</width>
           <height>383</height>
          </rect>
         </property>

@@ -655,6 +655,7 @@ void MainWindow::on_pushButton_11_released()  //电梯协议
     obj.insert("model",QJsonValue(model));
      obj.insert("hibcop",QJsonValue(ui->comboBox_toshiba_hib->currentText()));
      obj.insert("can08address",QJsonValue(ui->spinBox_can08->value()));
+     obj.insert("cansjw",QJsonValue(ui->comboBox_can_SJW->currentText().toInt()));
     root_object.insert("ElevatorProtocol",QJsonValue(obj));
     QJsonDocument json_s;
     json_s.setObject(root_object);
@@ -1075,6 +1076,7 @@ void MainWindow::on_pushButton_energy_clicked()
 
      obj.insert("pwmvalue",ui->comboBox_en_2->currentText().toInt());
         obj.insert("entertime",ui->remoteport_spinBox_en->value());
+         obj.insert("flag.CN2_3",ui->checkBox_3->isChecked());
 
 
 
